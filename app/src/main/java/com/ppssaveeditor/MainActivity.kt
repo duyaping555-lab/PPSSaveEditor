@@ -17,7 +17,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.documentfile.DocumentFile
+
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -124,7 +124,7 @@ class MainActivity : AppCompatActivity() {
     private fun processSaveDataDirectory(uri: Uri) {
         lifecycleScope.launch {
             try {
-                val docFile = DocumentFile.fromTreeUri(this@MainActivity, uri)
+                val docFile = androidx.documentfile.DocumentFile.fromTreeUri(this@MainActivity, uri)
                 tvSaveDataPath.text = docFile?.name ?: uri.path ?: "未知路径"
                 
                 // 查找PARAM.SFO文件
@@ -162,7 +162,7 @@ class MainActivity : AppCompatActivity() {
     private suspend fun findFileInDirectory(treeUri: Uri, fileName: String): File? =
         withContext(Dispatchers.IO) {
             try {
-                val docFile = DocumentFile.fromTreeUri(this@MainActivity, treeUri)
+                val docFile = androidx.documentfile.DocumentFile.fromTreeUri(this@MainActivity, treeUri)
                 val file = docFile?.findFile(fileName)
                 file?.uri?.let { uri ->
                     copyUriToTemp(uri, fileName)
@@ -174,7 +174,7 @@ class MainActivity : AppCompatActivity() {
     
     private suspend fun findDataFile(treeUri: Uri): File? = withContext(Dispatchers.IO) {
         try {
-            val docFile = DocumentFile.fromTreeUri(this@MainActivity, treeUri)
+            val docFile = androidx.documentfile.DocumentFile.fromTreeUri(this@MainActivity, treeUri)
             val possibleNames = listOf("DATA.BIN", "data.bin", "SECURE.BIN", "secure.bin", "SDDATA.BIN", "sddata.bin")
             
             for (name in possibleNames) {
