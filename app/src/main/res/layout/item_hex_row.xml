@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/hexRowLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="2dp"
+    android:background="@color/hex_background">
+
+    <TextView
+        android:id="@+id/tvOffset"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="00000000"
+        android:textColor="@color/offset_color"
+        android:textSize="12sp"
+        android:fontFamily="monospace" />
+
+    <LinearLayout
+        android:id="@+id/hexContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:orientation="horizontal">
+
+        <!-- Hex bytes will be added programmatically -->
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvAscii"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="................"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:fontFamily="monospace" />
+
+</LinearLayout>

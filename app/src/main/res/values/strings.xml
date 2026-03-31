@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">PPSSPP存档编辑器</string>
+    <string name="select_savedata">选择存档文件夹</string>
+    <string name="open_hex_editor">打开十六进制编辑器</string>
+    <string name="apply_cheat_code">应用补丁代码</string>
+    <string name="decrypt_save">解密存档</string>
+    <string name="encrypt_save">加密存档</string>
+    <string name="save_changes">保存修改</string>
+    <string name="backup_first">请先备份存档!</string>
+    <string name="param_sfo_info">PARAM.SFO信息</string>
+    <string name="game_title">游戏标题</string>
+    <string name="savedata_title">存档标题</string>
+    <string name="savedata_detail">存档详情</string>
+    <string name="enter_cheat_code">输入CWCheat代码</string>
+    <string name="apply">应用</string>
+    <string name="cancel">取消</string>
+    <string name="offset">偏移</string>
+    <string name="hex">十六进制</string>
+    <string name="ascii">ASCII</string>
+    <string name="search">搜索</string>
+    <string name="goto_offset">跳转到偏移</string>
+    <string name="modify_value">修改数值</string>
+</resources>

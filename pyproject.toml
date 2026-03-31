@@ -1,0 +1,35 @@
+[build-system]
+requires = ["briefcase"]
+build-backend = "briefcase"
+
+[tool.briefcase]
+project_name = "PPSSaveEditor"
+bundle = "com.ppssaveeditor"
+version = "1.0.0"
+url = "https://ppssaveeditor.example.com"
+license = "MIT license"
+author = 'PPSSaveEditor Team'
+author_email = 'dev@ppssaveeditor.example.com'
+
+[tool.briefcase.app.ppssaveeditor]
+formal_name = "PPSSPP Save Editor"
+description = "A save file editor for PPSSPP/PSP"
+icon = "src/ppssaveeditor/resources/icon"
+sources = ['src/ppssaveeditor']
+requires = [
+    'pycryptodome>=3.15.0',
+    'kivy>=2.2.0',
+]
+
+[tool.briefcase.app.ppssaveeditor.android]
+template = "https://github.com/beeware/briefcase-android-gradle-template"
+template_branch = "v0.3.16"
+build_gradle_dependencies = [
+    "com.android.support:support-v4:28.0.0",
+]
+
+[tool.briefcase.app.ppssaveeditor.android.permission]
+INTERNET = true
+READ_EXTERNAL_STORAGE = true
+WRITE_EXTERNAL_STORAGE = true
+MANAGE_EXTERNAL_STORAGE = true

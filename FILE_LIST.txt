@@ -1,0 +1,112 @@
+PPSSPP Save Editor - 项目文件列表
+=====================================
+
+项目根目录: dev/PPSSaveEditor/
+总文件数: 40+
+
+核心文件
+--------
+psp_save_editor.py          - 核心功能模块 (22KB)
+  * SFOParser - SFO文件解析器
+  * SaveDataCrypto - 加解密模块
+  * CheatCodeApplier - CWCheat代码应用器
+  * HexEditor - 十六进制编辑器
+  * SaveDataEditor - 主编辑器类
+
+test_editor.py              - 自动化测试脚本
+demo.py                     - 功能演示脚本
+build_apk.py                - APK构建脚本
+
+Python依赖
+----------
+requirements.txt            - Python依赖列表
+  * pycryptodome (加密库)
+
+Android原生应用
+---------------
+app/build.gradle            - 应用构建配置
+app/proguard-rules.pro      - ProGuard规则
+app/src/main/AndroidManifest.xml - 应用清单
+
+Java/Kotlin源文件:
+app/src/main/java/com/ppssaveeditor/
+  MainActivity.kt           - 主界面
+  HexEditorActivity.kt      - 十六进制编辑器界面
+  CheatCodeActivity.kt      - 补丁代码界面
+  SFOParser.kt              - SFO解析器
+  SaveDataCrypto.kt         - 加解密模块
+  CheatCodeApplier.kt       - 代码应用器
+  HexEditorAdapter.kt       - 十六进制适配器
+
+布局文件:
+app/src/main/res/layout/
+  activity_main.xml         - 主界面布局
+  activity_hex_editor.xml   - 十六进制编辑器布局
+  activity_cheat_code.xml   - 补丁代码布局
+  item_hex_row.xml          - 十六进制行项
+  dialog_modify_value.xml   - 修改数值对话框
+
+资源文件:
+app/src/main/res/values/
+  strings.xml               - 字符串资源
+  colors.xml                - 颜色定义
+  themes.xml                - 主题定义
+  
+app/src/main/res/mipmap-*/  - 图标资源
+  ic_launcher.xml
+  ic_launcher_round.xml
+
+app/src/main/res/drawable/
+  ic_launcher_foreground.xml - 图标前景
+
+Gradle配置
+----------
+build.gradle                - 项目级构建配置
+settings.gradle             - Gradle设置
+gradle/wrapper/
+  gradle-wrapper.properties - Wrapper配置
+
+Kivy移动应用
+------------
+mobile_app/
+  main.py                   - Kivy GUI应用 (22KB)
+  buildozer.spec            - Buildozer配置 (APK构建)
+  psp_save_editor.py        - 核心模块(复制)
+  README.md                 - Kivy版本说明
+
+文档文件
+--------
+README.md                   - 项目主说明
+BUILD_INSTRUCTIONS.md       - 构建指南
+EMULATOR_TEST_GUIDE.md      - 模拟器测试指南
+PROJECT_SUMMARY.md          - 项目总结
+FINAL_SUMMARY.md            - 最终总结
+FILE_LIST.txt               - 本文件
+
+示例文件
+--------
+example_cheat_codes.txt     - CWCheat代码示例
+
+GitHub Actions (可选)
+--------------------
+.github/workflows/
+  build.yml                 - 自动构建工作流
+
+使用说明
+--------
+1. Python命令行版本:
+   python psp_save_editor.py <存档路径> --decrypt --hex
+
+2. Kivy GUI版本:
+   cd mobile_app
+   python main.py
+
+3. Android APK构建:
+   cd mobile_app
+   buildozer android debug
+
+4. 运行测试:
+   python test_editor.py
+
+5. 运行演示:
+   python demo.py
