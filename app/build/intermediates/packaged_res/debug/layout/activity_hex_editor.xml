@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/hex_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/purple_700">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="返回"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="搜索十六进制"
+            android:textColor="@color/white"
+            android:textColorHint="#888888"
+            android:background="#333333"
+            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="搜索"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnGoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="跳转"
+            android:textSize="12sp"
+            android:layout_marginStart="4dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        android:background="#333333">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="偏移"
+            android:textColor="@color/offset_color"
+            android:textSize="12sp"
+            android:fontFamily="monospace" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F"
+            android:textColor="@color/hex_text"
+            android:textSize="12sp"
+            android:fontFamily="monospace" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ASCII"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:fontFamily="monospace" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHex"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/hex_background" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/purple_700">
+
+        <TextView
+            android:id="@+id/tvCurrentOffset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="偏移: 0x00000000"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:fontFamily="monospace" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnModify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改数值"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="保存"
+            android:textSize="12sp"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+</LinearLayout>

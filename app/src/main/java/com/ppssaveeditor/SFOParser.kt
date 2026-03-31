@@ -139,7 +139,7 @@ class SFOParser {
         }
         
         // 对齐到4字节
-        keyTableSize = (keyTableSize + 3) and 0xFFFFFFFC
+        keyTableSize = (keyTableSize + 3) and 0x7FFFFFFC
         
         var dataTableSize = 0
         val dataOffsets = mutableMapOf<String, Int>()
@@ -150,7 +150,7 @@ class SFOParser {
         }
         
         // 对齐到4字节
-        dataTableSize = (dataTableSize + 3) and 0xFFFFFFFC
+        dataTableSize = (dataTableSize + 3) and 0x7FFFFFFC
         
         val headerSize = 20
         val indexSize = entries.size * 16

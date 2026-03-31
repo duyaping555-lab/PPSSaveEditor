@@ -138,9 +138,9 @@ class HexEditorActivity : AppCompatActivity() {
         
         // 设置类型选择器
         val types = arrayOf("8位", "16位", "32位")
-        val adapter = android.widget.ArrayAdapter(this, android.R.layout.simple_spinner_item, types)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerType.adapter = adapter
+        val typeAdapter = android.widget.ArrayAdapter(this, android.R.layout.simple_spinner_item, types)
+        typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerType.adapter = typeAdapter
         
         AlertDialog.Builder(this)
             .setTitle("修改数值")

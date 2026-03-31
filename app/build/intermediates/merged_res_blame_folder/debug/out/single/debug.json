@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "com.ppssaveeditor.app-merged_res-33:/layout_activity_main.xml.flat",
+        "source": "com.ppssaveeditor.app-main-35:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.ppssaveeditor.app-merged_res-33:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.ppssaveeditor.app-main-35:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.ppssaveeditor.app-merged_res-33:/layout_item_hex_row.xml.flat",
+        "source": "com.ppssaveeditor.app-main-35:/layout/item_hex_row.xml"
+    },
+    {
+        "merged": "com.ppssaveeditor.app-merged_res-33:/layout_dialog_modify_value.xml.flat",
+        "source": "com.ppssaveeditor.app-main-35:/layout/dialog_modify_value.xml"
+    },
+    {
+        "merged": "com.ppssaveeditor.app-merged_res-33:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.ppssaveeditor.app-main-35:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.ppssaveeditor.app-merged_res-33:/layout_activity_hex_editor.xml.flat",
+        "source": "com.ppssaveeditor.app-main-35:/layout/activity_hex_editor.xml"
+    },
+    {
+        "merged": "com.ppssaveeditor.app-merged_res-33:/layout_activity_cheat_code.xml.flat",
+        "source": "com.ppssaveeditor.app-main-35:/layout/activity_cheat_code.xml"
+    },
+    {
+        "merged": "com.ppssaveeditor.app-merged_res-33:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.ppssaveeditor.app-main-35:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    }
+]

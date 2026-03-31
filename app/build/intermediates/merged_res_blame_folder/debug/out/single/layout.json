@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "com.ppssaveeditor.app-mergeDebugResources-32:/layout/activity_hex_editor.xml",
+        "source": "com.ppssaveeditor.app-main-35:/layout/activity_hex_editor.xml"
+    },
+    {
+        "merged": "com.ppssaveeditor.app-mergeDebugResources-32:/layout/item_hex_row.xml",
+        "source": "com.ppssaveeditor.app-main-35:/layout/item_hex_row.xml"
+    },
+    {
+        "merged": "com.ppssaveeditor.app-mergeDebugResources-32:/layout/dialog_modify_value.xml",
+        "source": "com.ppssaveeditor.app-main-35:/layout/dialog_modify_value.xml"
+    },
+    {
+        "merged": "com.ppssaveeditor.app-mergeDebugResources-32:/layout/activity_main.xml",
+        "source": "com.ppssaveeditor.app-main-35:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.ppssaveeditor.app-mergeDebugResources-32:/layout/activity_cheat_code.xml",
+        "source": "com.ppssaveeditor.app-main-35:/layout/activity_cheat_code.xml"
+    }
+]

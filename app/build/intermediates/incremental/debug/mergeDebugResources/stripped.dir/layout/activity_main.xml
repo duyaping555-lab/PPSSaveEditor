@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/black">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PPSSPP 存档编辑器"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:padding="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="警告: 修改前请务必备份存档!"
+        android:textColor="#FF4444"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="8dp" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="@color/purple_700"
+        app:cardCornerRadius="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/btnSelectSaveData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="选择存档文件夹"
+                android:textSize="16sp"
+                app:cornerRadius="8dp" />
+
+            <TextView
+                android:id="@+id/tvSaveDataPath"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="未选择存档"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:maxLines="2"
+                android:ellipsize="middle" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#FF2D2D2D"
+        app:cardCornerRadius="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="存档信息"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvGameTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="游戏标题: -"
+                android:textColor="@color/white"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/tvSaveTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="存档标题: -"
+                android:textColor="@color/white"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvSaveDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="存档详情: -"
+                android:textColor="@color/white"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="24dp">
+
+        <Button
+            android:id="@+id/btnDecrypt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="解密"
+            android:layout_marginEnd="8dp"
+            android:enabled="false" />
+
+        <Button
+            android:id="@+id/btnEncrypt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="加密"
+            android:layout_marginStart="8dp"
+            android:enabled="false" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnHexEditor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开十六进制编辑器"
+        android:layout_marginTop="16dp"
+        android:enabled="false" />
+
+    <Button
+        android:id="@+id/btnCheatCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="应用补丁代码"
+        android:layout_marginTop="8dp"
+        android:enabled="false" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用说明:\n1. 从PPSSPP导出存档到手机存储\n2. 选择存档文件夹(包含PARAM.SFO和DATA.BIN)\n3. 解密存档(如需要)\n4. 使用十六进制编辑器或补丁代码修改\n5. 加密存档(如需要)\n6. 导回PPSSPP"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:layout_marginTop="24dp"
+        android:lineSpacingMultiplier="1.3" />
+
+</LinearLayout>
