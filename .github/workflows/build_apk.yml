@@ -14,6 +14,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    - name: List files
+      run: ls -la
+    
+    - name: Check Gradle files
+      run: |
+        ls -la gradle/wrapper/ || echo "No gradle/wrapper"
+        cat gradle/wrapper/gradle-wrapper.properties 2>/dev/null || echo "No wrapper properties"
+    
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
@@ -25,20 +33,19 @@ jobs:
       run: chmod +x gradlew
     
     - name: Build with Gradle
-      run: ./gradlew assembleDebug
+      run: |
+        ./gradlew --version
+        ./gradlew assembleDebug --stacktrace
+    
+    - name: Check output
+      if: failure()
+      run: |
+        find . -name "*.apk" 2>/dev/null || echo "No APK found"
+        cat app/build/outputs/*/apk/debug/output-metadata.json 2>/dev/null || echo "No metadata"
     
     - name: Upload APK
       uses: actions/upload-artifact@v3
+      if: success()
       with:
         name: PPSSaveEditor-APK
         path: app/build/outputs/apk/debug/*.apk
-    
-    - name: Create Release
-      if: github.event_name == ''push'' && github.ref == ''refs/heads/main''
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: v${{ github.run_number }}
-        name: Release v${{ github.run_number }}
-        files: app/build/outputs/apk/debug/*.apk
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
