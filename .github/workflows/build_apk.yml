@@ -19,8 +19,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y git zip unzip openjdk-17-jdk python3-pip
-        sudo apt-get install -y automake libtool pkg-config cmake
+        sudo apt-get install -y git zip unzip openjdk-17-jdk
         pip install buildozer cython kivy
     
     - name: Build APK
@@ -36,10 +35,3 @@ jobs:
       with:
         name: PPSSaveEditor-APK
         path: mobile_app/bin/*.apk
-    
-    - name: Upload logs on failure
-      uses: actions/upload-artifact@v3
-      if: failure()
-      with:
-        name: buildozer-logs
-        path: mobile_app/.buildozer/logs/
