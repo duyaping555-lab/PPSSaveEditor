@@ -17,7 +17,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-
+import androidx.documentfile.DocumentFile
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -164,7 +164,7 @@ class MainActivity : AppCompatActivity() {
             try {
                 val docFile = androidx.documentfile.DocumentFile.fromTreeUri(this@MainActivity, treeUri)
                 val file = docFile?.findFile(fileName)
-                file?.uri?.let { uri ->
+                file?.uri?.let { uri: Uri ->
                     copyUriToTemp(uri, fileName)
                 }
             } catch (e: Exception) {
