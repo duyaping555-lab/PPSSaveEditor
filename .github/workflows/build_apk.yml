@@ -1,4 +1,4 @@
-name: Build Android APK
+name: Build Android APK (Auto Fix)
 
 on:
   push:
@@ -21,37 +21,36 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
     
-    - name: Check project structure
+    - name: Fix code issues automatically
       run: |
-        echo "=== Project Structure ==="
-        ls -la
-        echo ""
-        echo "=== build.gradle ==="
-        cat build.gradle
-        echo ""
-        echo "=== app/build.gradle ==="
-        cat app/build.gradle
-        echo ""
-        echo "=== settings.gradle ==="
-        cat settings.gradle
+        echo "=== Fixing MainActivity.kt DocumentFile issues ==="
+        sed -i ''s/import androidx.documentfile.DocumentFile//g'' app/src/main/java/com/ppssaveeditor/MainActivity.kt
+        sed -i ''s/DocumentFile.fromTreeUri/androidx.documentfile.DocumentFile.fromTreeUri/g'' app/src/main/java/com/ppssaveeditor/MainActivity.kt
+        
+        echo "=== Fixing SFOParser.kt integer overflow ==="
+        sed -i ''s/and 0xFFFFFFFC/and 0x7FFFFFFC/g'' app/src/main/java/com/ppssaveeditor/SFOParser.kt
+        
+        echo "=== Fixing HexEditorActivity.kt variable conflict ==="
+        sed -i ''s/val adapter = android.widget.ArrayAdapter/val typeAdapter = android.widget.ArrayAdapter/g'' app/src/main/java/com/ppssaveeditor/HexEditorActivity.kt
+        sed -i ''s/adapter.setDropDownViewResource/typeAdapter.setDropDownViewResource/g'' app/src/main/java/com/ppssaveeditor/HexEditorActivity.kt
+        sed -i ''s/spinnerType.adapter = adapter/spinnerType.adapter = typeAdapter/g'' app/src/main/java/com/ppssaveeditor/HexEditorActivity.kt
     
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     
-    - name: Build with Gradle
-      run: |
-        ./gradlew assembleDebug --stacktrace 2>&1 | tail -200
-      continue-on-error: true
-    
-    - name: Check for APK
-      run: |
-        echo "=== Looking for APK ==="
-        find . -name "*.apk" -type f 2>/dev/null || echo "No APK found"
-        ls -la app/build/outputs/apk/debug/ 2>/dev/null || echo "Output directory not found"
+    - name: Build debug APK
+      run: ./gradlew assembleDebug --stacktrace
     
     - name: Upload APK
       uses: actions/upload-artifact@v3
       if: success()
       with:
         name: PPSSaveEditor-APK
-        path: app/build/outputs/apk/debug/*.apk
+        path: app/build/outputs/apk/debug/app-debug.apk
+    
+    - name: Upload build logs on failure
+      uses: actions/upload-artifact@v3
+      if: failure()
+      with:
+        name: build-logs
+        path: app/build/
