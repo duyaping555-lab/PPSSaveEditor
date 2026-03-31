@@ -1,4 +1,4 @@
-name: Build Android APK with Buildozer
+name: Build Android APK
 
 on:
   push:
@@ -11,44 +11,35 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: List files
-      run: |
-        ls -la
-        ls -la mobile_app/
-    
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: set up JDK 17
+      uses: actions/setup-java@v3
       with:
-        python-version: ''3.10''
+        java-version: ''17''
+        distribution: ''temurin''
+        cache: gradle
     
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y git zip unzip openjdk-17-jdk
-        pip install buildozer cython kivy
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
     
-    - name: Prepare build files
+    - name: Fix code issues
       run: |
-        cd mobile_app
-        cp ../psp_save_editor.py .
-        ls -la
+        # Fix HexEditorActivity.kt - rename local variable to avoid conflict
+        sed -i ''s/val adapter = android.widget.ArrayAdapter/val typeAdapter = android.widget.ArrayAdapter/g'' app/src/main/java/com/ppssaveeditor/HexEditorActivity.kt
+        sed -i ''s/adapter.setDropDownViewResource/typeAdapter.setDropDownViewResource/g'' app/src/main/java/com/ppssaveeditor/HexEditorActivity.kt
+        sed -i ''s/spinnerType.adapter = adapter/spinnerType.adapter = typeAdapter/g'' app/src/main/java/com/ppssaveeditor/HexEditorActivity.kt
+        
+        # Fix SFOParser.kt - fix integer literal overflow
+        sed -i ''s/and 0xFFFFFFFC/and 0x7FFFFFFC/g'' app/src/main/java/com/ppssaveeditor/SFOParser.kt
     
-    - name: Build APK
-      run: |
-        cd mobile_app
-        buildozer android debug 2>&1 | tee build.log
-      timeout-minutes: 60
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    
+    - name: Build with Gradle
+      run: ./gradlew assembleDebug
     
     - name: Upload APK
       uses: actions/upload-artifact@v3
       if: success()
       with:
         name: PPSSaveEditor-APK
-        path: mobile_app/bin/*.apk
-    
-    - name: Upload logs
-      uses: actions/upload-artifact@v3
-      if: always()
-      with:
-        name: build-logs
-        path: mobile_app/build.log
+        path: app/build/outputs/apk/debug/*.apk
