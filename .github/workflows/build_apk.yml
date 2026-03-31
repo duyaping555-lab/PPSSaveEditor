@@ -24,19 +24,25 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     
+    - name: Check files
+      run: |
+        ls -la
+        cat build.gradle
+        cat app/build.gradle
+    
     - name: Build debug APK
-      run: ./gradlew assembleDebug
+      run: ./gradlew assembleDebug 2>&1 | tee build.log
     
     - name: Upload APK
       uses: actions/upload-artifact@v3
       if: success()
       with:
         name: PPSSaveEditor-APK
-        path: app/build/outputs/apk/debug/app-debug.apk
+        path: app/build/outputs/apk/debug/*.apk
     
-    - name: Upload logs on failure
+    - name: Upload build logs
       uses: actions/upload-artifact@v3
-      if: failure()
+      if: always()
       with:
         name: build-logs
-        path: app/build/
+        path: build.log
